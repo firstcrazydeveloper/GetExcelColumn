@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GetExcelColumnValues
 {
-    class PrintExcelColumn
+    class PrintExcelColumnValue
     {
         static void Main(string[] args)
         {
@@ -125,15 +125,14 @@ namespace GetExcelColumnValues
         {
             if (columnNumber == null) throw new ArgumentNullException("columnNumber");
 
-            int tempColNumber = columnNumber;
             string setColumnName = String.Empty;
             int tempRemainder = 0;
 
-            while (tempColNumber > 0)
+            while (columnNumber > 0)
             {
-                tempRemainder = (tempColNumber - 1) % 26;
+                tempRemainder = (columnNumber - 1) % 26;
                 setColumnName = Convert.ToChar(65 + tempRemainder).ToString() + setColumnName;
-                tempColNumber = (int)((tempColNumber - tempRemainder) / 26);
+                columnNumber = (int)((columnNumber - tempRemainder) / 26);
             }
 
             return setColumnName;
